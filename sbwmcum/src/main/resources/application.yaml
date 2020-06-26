@@ -1,0 +1,43 @@
+#Server Port
+server:
+  port: 8080
+  servlet:
+    context-path: /sbwmcum
+management:
+  endpoints:
+    web:
+      base-path: /manage
+      exposure:
+        include: '*'
+  security:
+    enabled: false
+
+endpoints:
+  health:
+    sensitive: false
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/emp_details?maxPoolSize=10&minPoolSize=1&maxIdleTimeMS=10000&waitQueueMultiple=15
+      database: emp_details
+      spring.data.mongodb.host: mongodb
+  main:
+    allow-bean-definition-overriding: true
+    #Logger configuration
+
+  devtools:
+    add-properties: true
+    logging:
+  file: logs/app.log
+  level:
+    ROOT: INFO
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} - [%thread] [%file:%line] - %msg%n'
+    console:  '%d{yyyy-MM-dd HH:mm:ss} - [%thread] [%file:%line] - %msg%n'
+
+cors:
+  enable: true
+  allowedOrigins: '*'
+  allowedMethods: 'GET,POST,PUT,DELETE,OPTIONS'
+  allowedHeaders: '*'
